@@ -1,0 +1,14 @@
+#生产环境
+server:
+  port: 8082
+  servlet:
+    context-path: /wangbin
+
+sport: football
+age: 25
+content: "sport:${sport},age:${age}"
+
+student:
+  age: 35
+  name: 李四
+  socre: 67.8
