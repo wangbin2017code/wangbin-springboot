@@ -6,6 +6,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +20,28 @@ public class HelloController {
 
     @Autowired
     private AnimalRepository animalRepository;
+
+    @GetMapping("test")
+    public String test(){
+        return "hello spring boot!";
+    }
+
+    @GetMapping("createFile")
+    public String createFile(){
+        File file = new File("/product/DATA/test.txt");
+        if(!file.getParentFile().exists()){
+            file.getParentFile().mkdirs();
+            if(!file.exists()){
+                try {
+                    file.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return "createFile";
+    }
+
 
     // 查询所有
     @PostMapping("/getAll")
